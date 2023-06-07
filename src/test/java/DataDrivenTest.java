@@ -1,16 +1,18 @@
 import com.tngtech.junit.dataprovider.*;
-import core.GeneralHelper;
 import org.junit.jupiter.api.TestTemplate;
 import org.junit.jupiter.api.extension.ExtendWith;
 
+import static PageObjects.GeneralPage.generalPage;
+
 @ExtendWith({UseDataProviderExtension.class, DataProviderExtension.class})
-public class DataDrivenTest extends GeneralHelper {
+public class DataDrivenTest {
+
     @DataProvider
     public static Object[][] dataProvider() {
         return new Object[][]{
-                {"http://selenium.webtesting.eu/","selenium"},
-                {"https://de-de.facebook.com/","facebook"},
-                {"https://www.qytera.de/","die experten"}
+                {"http://selenium.webtesting.eu/","Selenium"},
+                {"https://de-de.facebook.com/","Facebook"},
+                {"https://www.qytera.de/","Die Experten"}
         };
     }
     

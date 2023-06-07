@@ -1,20 +1,20 @@
 package PageObjects;
 
-import core.GeneralHelper;
+import core.SingletonBrowserClass;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class GeneralPage extends GeneralHelper {
+public class GeneralPage    {
     public static final GeneralPage generalPage = new GeneralPage();
-    public static GeneralPage getInstance(){
-        return generalPage;
-    }
 
+    SingletonBrowserClass singletonBrowserClass = SingletonBrowserClass.getInstanceOfSingletonBrowserClass();
+    WebDriver driver = singletonBrowserClass.getDriver();
     public void doOpenBrowserWithLink(String url){
         driver.get(url);
     }
@@ -24,7 +24,7 @@ public class GeneralPage extends GeneralHelper {
     }
 
     public void assertTabTitle(String title){
-        Assertions.assertTrue(driver.getTitle().toLowerCase().contains(title));
+        Assertions.assertTrue(driver.getTitle().contains(title));
     }
 
     public WebElement waitUntilElementClickable(WebElement e, int duration){
